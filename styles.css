@@ -1,0 +1,23 @@
+h1 {
+    text-align: center;
+}
+
+
+.bookshelves {
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+}
+.shelf {
+    width: 80vw;
+    border-bottom: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+    padding-bottom: 4px;
+    
+    
+}
+.book {
+    max-width: 100px;
+}
