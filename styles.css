@@ -42,7 +42,8 @@ h1 {
     width: 5rem;
 }
 
-.modal {
+.input-modal,
+.bookInfo-modal {
     display: none;
     position: fixed;
     padding-top: 200px;
@@ -53,7 +54,8 @@ h1 {
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.5);
 }
-.modal-content {
+.input-modal-content,
+.bookInfo-modal-content {
     position: relative;
     background-color: white;
     padding: 20px;
@@ -65,13 +67,15 @@ h1 {
     animation-name: animatetop;
     animation-duration: 0.4s;
 }
-.close-btn {
+.input-close-btn,
+.bookInfo-close-btn {
     float: right;
     color: lightgray;
     font-size: 24px;
     font-weight: bold;
 }
-.close-btn:hover {
+.input-close-btn:hover,
+.bookInfo-close-btn:hover {
     color: darkgray;
 }
 @-webkit-keyframes animatetop {

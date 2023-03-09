@@ -1,15 +1,24 @@
-const modalBtn = document.querySelector("#modal-btn");
-const modal = document.querySelector(".modal");
-const closeBtn = document.querySelector(".close-btn");
+const modalBtn = document.querySelector('#modal-btn');
+const inputModal = document.querySelector('.input-modal');
+const inputCloseBtn = document.querySelector('.input-close-btn');
+const bookInfoModal = document.querySelector('.bookInfo-modal');
+const bookInfoCloseBtn = document.querySelector('.bookInfo-close-btn');
 
 const bookCreate = document.getElementById('book-create');
-const bookTitle = document.getElementById('title');
-const bookAuthor = document.getElementById('author');
-const pageCount = document.getElementById('page-count');
-const readStatus = document.getElementById('read-status');
+const bookTitleInput = document.getElementById('title');
+const bookAuthorInput = document.getElementById('author');
+const pageCountInput = document.getElementById('page-count');
+const readStatusInput = document.getElementById('read-status');
 const submitButton = document.getElementById('submit-button');
 
 const shelves = document.querySelectorAll('.shelf');
+
+const bookTitleDisplay = document.querySelector('.book-title');
+const bookAuthorDisplay = document.querySelector('.book-author');
+const bookPageCountDisplay = document.querySelector('.book-pageCount');
+const bookReadStatusDisplay = document.querySelector('.book-readStatus');
+
+
 
 
 
@@ -34,7 +43,7 @@ function assignIcons() {
 }
 
 function addBookToLibrary() {
-  const newBook = new Book(bookTitle.value, bookAuthor.value, pageCount.value, readStatus.value);
+  const newBook = new Book(bookTitleInput.value, bookAuthorInput.value, pageCountInput.value, readStatusInput.checked);
   myLibrary.push(newBook);
 }
 
@@ -47,50 +56,73 @@ function shelfPlacement(book) {
   }
 }
 
+function setModalInfo(book) {
+  bookAuthorDisplay.textContent = myLibrary[book.dataset.libraryindex].author;
+  bookTitleDisplay.textContent = myLibrary[book.dataset.libraryindex].title;
+  bookPageCountDisplay.textContent = myLibrary[book.dataset.libraryindex].pages;
+  bookReadStatusDisplay.textContent = (myLibrary[book.dataset.libraryindex].read === true) 
+  ? "Completed" 
+  :"Not Completed";
+
+}
+
+function addBookInteraction() {
+  setModalInfo(this);
+  bookInfoModal.style.display = "block";
+}
+
+
+
 
 
 function createBookElements() {
   myLibrary.forEach(book => {
     if (book.isPlaced === false) {
-    const bookElement = document.createElement('img');
-    bookElement.src = book.icon;
-    bookElement.classList.add('book');
-    shelfPlacement(bookElement)
-    book.isPlaced = true;
-    }
-  })
-}
-
-function displayBooks() {
-  myLibrary.forEach(() => {
-    
-  })
-}
-
+      const bookElement = document.createElement('img');
+      bookElement.src = book.icon;
+      bookElement.classList.add('book');
+      bookElement.setAttribute('data-libraryIndex', `${myLibrary.indexOf(book)}`);
+      shelfPlacement(bookElement);
+      bookElement.addEventListener('click', addBookInteraction)
+      }
+      book.isPlaced = true;
+    })
+  }
+   
 
 
 modalBtn.onclick = function() {
-  modal.style.display = "block"
+  inputModal.style.display = "block";
 }
   
 
-closeBtn.onclick = function() {
-  modal.style.display = "none"
+inputCloseBtn.onclick = function() {
+  inputModal.style.display = "none";
 }
+bookInfoCloseBtn.onclick = function() {
+  bookInfoModal.style.display = "none";
+}
+
 window.onclick = function(e) {
-  if(e.target == modal) {
-    modal.style.display = "none"
+  if(e.target == inputModal) {
+    inputModal.style.display = "none"
+  }
+  if(e.target == bookInfoModal) {
+    bookInfoModal.style.display = "none"
   }
 }
+
 
 submitButton.addEventListener('click', (event) => {
   event.preventDefault();
   addBookToLibrary();
   assignIcons();
   createBookElements();
-  modal.style.display = "none"
+  inputModal.style.display = "none"
   bookCreate.reset();
 })
+
+
 
 
 
