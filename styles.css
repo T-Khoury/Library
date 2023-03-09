@@ -18,7 +18,10 @@ h1 {
 .shelf {
     width: 70vw;
     border-bottom: 1px solid grey;
-    display: flex;
+    display: grid;
+    grid-template-columns: 90px 90px 90px;
+    grid-auto-flow: row;
+
     justify-content: space-between;
     padding-bottom: 4px;
     margin-bottom: 2rem;
