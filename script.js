@@ -118,7 +118,7 @@ submitButton.addEventListener('click', (event) => {
   addBookToLibrary();
   assignIcons();
   createBookElements();
-  inputModal.style.display = "none"
+  inputModal.style.display = "none";
   bookCreate.reset();
 })
 
