@@ -25,13 +25,15 @@ const bookReadStatusDisplay = document.querySelector('.book-readStatus');
 const myLibrary = [];
 const bookIcons = ["images/book1.png", "images/book2.png", "images/book3.png", "images/book4.png", "images/book5.png", "images/book6.png", "images/book7.png"];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.isPlaced = false;
-}
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.isPlaced = false;
+  };
+};
 
 function assignIcons() {
   myLibrary.forEach(book => {
