@@ -57,12 +57,12 @@ function shelfPlacement(book) {
 }
 
 function setModalInfo(book) {
-  bookAuthorDisplay.textContent = myLibrary[book.dataset.libraryindex].author;
-  bookTitleDisplay.textContent = myLibrary[book.dataset.libraryindex].title;
-  bookPageCountDisplay.textContent = myLibrary[book.dataset.libraryindex].pages;
-  bookReadStatusDisplay.textContent = (myLibrary[book.dataset.libraryindex].read === true) 
+  bookAuthorDisplay.textContent = `Author: ${myLibrary[book.dataset.libraryindex].author}`;
+  bookTitleDisplay.textContent = `Title: ${myLibrary[book.dataset.libraryindex].title}`;
+  bookPageCountDisplay.textContent = `Page Count: ${myLibrary[book.dataset.libraryindex].pages}`;
+  bookReadStatusDisplay.textContent = `Reading Status: ${(myLibrary[book.dataset.libraryindex].read === true) 
   ? "Completed" 
-  :"Not Completed";
+  :"Not Completed"}`;
 
 }
 
