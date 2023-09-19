@@ -115,7 +115,7 @@ window.onclick = function(e) {
 }
 
 
-submitButton.addEventListener('click', (event) => {
+bookCreate.addEventListener('submit', (event) => {
   event.preventDefault();
   addBookToLibrary();
   assignIcons();
